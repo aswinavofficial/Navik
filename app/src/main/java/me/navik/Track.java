@@ -27,7 +27,7 @@ public class Track extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
         imageView = (PinView) findViewById(R.id.PinView);
-        imageView.setImage(ImageSource.resource(R.drawable.floor));
+        imageView.setImage(ImageSource.resource(R.drawable.plan1));
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {
