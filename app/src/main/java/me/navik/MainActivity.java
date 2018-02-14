@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override public void onPermissionDenied(PermissionDeniedResponse response) {/* ... */}
                     @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
                 }).check();
-        b=(Button)findViewById(R.id.button);
         t=(TextView)findViewById(R.id.textView2);
         findClient = new FindClient.Builder(this)
                 .baseUrl("http://iamaswin.me:18003")
