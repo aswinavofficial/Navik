@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Navik</string>
+    <string name="try_again">Reconnect</string>
 </resources>
