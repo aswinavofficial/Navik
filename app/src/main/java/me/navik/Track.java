@@ -34,6 +34,7 @@ public class Track extends AppCompatActivity {
         setContentView(R.layout.activity_track);
         imageView = (PinView) findViewById(R.id.PinView);
         imageView.setImage(ImageSource.resource(R.drawable.plan1));
+        imageView.setPin(new PointF(1950, 259), "2");
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {
@@ -62,7 +63,8 @@ public class Track extends AppCompatActivity {
                                 i++;
                             }
                             // imageView.setPin(new PointF(500f, 500f));
-                            imageView.setPin(new PointF(par[0], par[1]));
+                            imageView.setPin(new PointF(par[0], par[1]), "1");
+
                         }
                     });
 
@@ -86,7 +88,7 @@ public class Track extends AppCompatActivity {
     }
 
 
-    public void livelocation(View view)
+  /*  public void livelocation(View view)
     {
         if (internet_connection()){
             findClient.track()
@@ -104,7 +106,8 @@ public class Track extends AppCompatActivity {
                                 i++;
                             }
                             // imageView.setPin(new PointF(500f, 500f));
-                            imageView.setPin(new PointF(par[0], par[1]));
+                            imageView.setPin(new PointF(par[0], par[1]), "1");
+                            imageView.setPin(new PointF(1950, 659), "2");
                         }
                     });
 
@@ -125,15 +128,15 @@ public class Track extends AppCompatActivity {
         }
 
 
-    }
+    }  */
 
 
-    public void dest(View view)
+ /*   public void dest(View view)
     {
 
-        imageView.setPin(new PointF(1950, 259));
+        imageView.setPin(new PointF(1950, 259), "3");
 
-    }
+    } */
 
     boolean internet_connection(){
         //Check if connected to internet, output accordingly
