@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 }).check();
         t=(TextView)findViewById(R.id.textView2);
         findClient = new FindClient.Builder(this)
-                .baseUrl("http://iamaswin.me:18003")
+                .baseUrl("http://159.203.179.142:18003")
                 .group("ideathon")
                 .username("gola")
                 .build();
