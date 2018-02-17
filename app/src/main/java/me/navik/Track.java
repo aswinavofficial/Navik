@@ -5,11 +5,13 @@ import android.content.Context;
 import android.graphics.PointF;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.davemorrissey.labs.subscaleview.ImageSource;
 import com.karumi.dexter.Dexter;
@@ -28,6 +30,7 @@ import timber.log.Timber;
 public class Track extends AppCompatActivity {
     FindClient findClient;
     PinView imageView;
+    Handler mHandler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +38,7 @@ public class Track extends AppCompatActivity {
         imageView = (PinView) findViewById(R.id.PinView);
         imageView.setImage(ImageSource.resource(R.drawable.plan2));
         //imageView.setPin(new PointF(1950, 259), "dest");
-        imageView.setPin(new PointF(1750, 1450), "dest");
+       // imageView.setPin(new PointF(1750, 1450), "dest");
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {
@@ -44,10 +47,35 @@ public class Track extends AppCompatActivity {
                     @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permission, PermissionToken token) {/* ... */}
                 }).check();
         findClient = new FindClient.Builder(this)
-                .baseUrl("http://iamaswin.me:18003")
+                .baseUrl("http://159.203.179.142:18003")
                 .group("ideathon")
                 .username("gola")
                 .build();
+
+        this.mHandler = new Handler();
+        this.mHandler.postDelayed(m_Runnable,5000);
+
+
+
+
+    }
+
+    private final Runnable m_Runnable = new Runnable()
+    {
+        public void run()
+
+        {
+            update();
+
+
+        }
+
+    };//runnable
+
+
+    public void update()
+    {
+
         if (internet_connection()){
             findClient.track()
                     .subscribeOn(Schedulers.io())
@@ -64,7 +92,9 @@ public class Track extends AppCompatActivity {
                                 i++;
                             }
                             // imageView.setPin(new PointF(500f, 500f));
-                          // imageView.setPin(new PointF(par[0], par[1]), "live");
+                            Toast.makeText(Track.this,location,Toast.LENGTH_SHORT).show();
+
+                            imageView.setPin(new PointF(par[0], par[1]), "live");
 
                         }
                     });
@@ -84,11 +114,8 @@ public class Track extends AppCompatActivity {
                 }
             }).show();
         }
-
-
+        Track.this.mHandler.postDelayed(m_Runnable,5000);
     }
-
-
   /*  public void livelocation(View view)
     {
         if (internet_connection()){
