@@ -61,7 +61,7 @@ public class PinView extends SubsamplingScaleImageView{
     private void initialise(String name) {
         float density = getResources().getDisplayMetrics().densityDpi;
         if(name.equals("live"))
-        pin = BitmapFactory.decodeResource(this.getResources(), drawable.pin1);
+        pin = BitmapFactory.decodeResource(this.getResources(), drawable.pushpin_blue);
         if(name.equals("dest"))
            pin = BitmapFactory.decodeResource(this.getResources(), drawable.pushpin_blue);
         float w = (density/420f) * pin.getWidth();

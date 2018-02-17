@@ -22,6 +22,8 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.orchestral.findsdk.FindClient;
 
+import java.util.ArrayList;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -31,13 +33,26 @@ public class Track extends AppCompatActivity {
     FindClient findClient;
     PinView imageView;
     Handler mHandler;
+    private String interests;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track);
         imageView = (PinView) findViewById(R.id.PinView);
         imageView.setImage(ImageSource.resource(R.drawable.plan2));
-        //imageView.setPin(new PointF(1950, 259), "dest");
+
+        interests =  this.getIntent().getStringExtra("destination");
+        String [] cort = interests.split("_", 2);
+        Float[] par=new Float[cort.length];
+        int i=0;
+        for(String str:cort){
+            par[i]=Float.parseFloat(str);//Exception in this line
+            i++;
+        }
+        // imageView.setPin(new PointF(500f, 500f));
+
+        imageView.setPin(new PointF(par[0], par[1]), "dest");
+//        imageView.setPin(new PointF(1950, 259), "dest");
        // imageView.setPin(new PointF(1750, 1450), "dest");
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
