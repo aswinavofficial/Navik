@@ -34,7 +34,8 @@ public class Track extends AppCompatActivity {
         setContentView(R.layout.activity_track);
         imageView = (PinView) findViewById(R.id.PinView);
         imageView.setImage(ImageSource.resource(R.drawable.plan2));
-        imageView.setPin(new PointF(1950, 259), "dest");
+        //imageView.setPin(new PointF(1950, 259), "dest");
+        imageView.setPin(new PointF(1750, 1450), "dest");
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
                 .withListener(new PermissionListener() {
@@ -63,7 +64,7 @@ public class Track extends AppCompatActivity {
                                 i++;
                             }
                             // imageView.setPin(new PointF(500f, 500f));
-                            imageView.setPin(new PointF(par[0], par[1]), "live");
+                          // imageView.setPin(new PointF(par[0], par[1]), "live");
 
                         }
                     });

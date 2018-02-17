@@ -63,7 +63,7 @@ public class PinView extends SubsamplingScaleImageView{
         if(name.equals("live"))
         pin = BitmapFactory.decodeResource(this.getResources(), drawable.pin1);
         if(name.equals("dest"))
-            pin = BitmapFactory.decodeResource(this.getResources(), drawable.dest);
+           pin = BitmapFactory.decodeResource(this.getResources(), drawable.pushpin_blue);
         float w = (density/420f) * pin.getWidth();
         float h = (density/420f) * pin.getHeight();
         pin = Bitmap.createScaledBitmap(pin, (int)w, (int)h, true);
